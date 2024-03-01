@@ -11,8 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.jack.weather.data.weather.Weather
-import com.jack.weather.data.weather.WeatherUnit
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.jack.weather.ui.components.BackgroundWrapper
 import com.jack.weather.ui.components.CityEditView
 import com.jack.weather.ui.main.components.MainViewTopBarView
@@ -20,14 +19,16 @@ import com.jack.weather.ui.main.components.MainWeatherAnimatedView
 
 @Composable
 fun MainScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: MainViewModel = hiltViewModel()
 ) {
-    MainContent(modifier = modifier)
+    MainContent(modifier = modifier, mainViewModel = viewModel)
 }
 
 @Composable
 private fun MainContent(
     modifier: Modifier = Modifier,
+    mainViewModel: MainViewModel
 ) {
     Surface(
         modifier = modifier
@@ -42,7 +43,9 @@ private fun MainContent(
                 CityEditView(
                     modifier = Modifier.fillMaxWidth()
                 )
-                MainViewTopBarView()
+                MainViewTopBarView(onExpanded = {
+                    mainViewModel.update(it)
+                })
             }
 
             Column(
@@ -53,15 +56,7 @@ private fun MainContent(
             ) {
                 Spacer(modifier = Modifier.height(30.dp))
                 MainWeatherAnimatedView(
-                    weather = Weather(
-                        city = "Da Nang",
-                        weatherUnit = WeatherUnit.IMPERIAL,
-                        type = Weather.Type.CLOUDS,
-                        temperature = 30f,
-                        humidity = 10,
-                        pressure = 10,
-                        timestampSecond = 1709204
-                    )
+                    weather = mainViewModel.uiState.weather
                 )
             }
         }

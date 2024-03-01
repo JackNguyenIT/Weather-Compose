@@ -51,7 +51,7 @@ fun CityEditView(
             .padding(12.dp)
     ) {
         Card(
-            backgroundColor = Color(236, 234, 235),
+            backgroundColor = WeatherAppTheme.colors.neumorphicBackgroundColor,
             elevation = 0.dp,
             modifier = Modifier
                 .clip(shape = RoundedCornerShape(12.dp))

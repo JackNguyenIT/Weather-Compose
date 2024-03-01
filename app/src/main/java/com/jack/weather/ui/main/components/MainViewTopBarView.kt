@@ -12,10 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jack.weather.data.weather.Weather
 
 @Composable
 fun MainViewTopBarView(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    weather: Weather? = null,
+    onExpanded: (TemperatureContainerStatus) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -32,7 +35,7 @@ fun MainViewTopBarView(
                 .padding(start = 24.dp, top = 20.dp, end = 24.dp)
         ) {
             Text(
-                text = "cityState!!",
+                text = weather?.city ?: "",
                 fontSize = 22.sp,
                 fontWeight = FontWeight(900),
                 modifier = Modifier
@@ -46,5 +49,6 @@ fun MainViewTopBarView(
                     .wrapContentHeight()
             )
         }
+        MainViewTemperatureContainerView(onExpanded = onExpanded)
     }
 }

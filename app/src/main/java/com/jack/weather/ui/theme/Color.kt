@@ -14,6 +14,8 @@ val Ming = Color(0xFF336677)
 val backgroundTop = Color(0XFFEEF0F5)
 val backgroundBottom = Color(0XFFEEF0F5)
 
+val neumorphicBackgroundColor = Color(236, 234, 235)
+
 val DarkColorPalette = darkColors(
     primary = Teal100,
     primaryVariant = Purple700,
@@ -40,6 +42,7 @@ val LightExtendedColorsPalette = ExtendedColors(
     defaultContentColor = Color.Black,
     backgroundTop = backgroundTop,
     backgroundBottom = backgroundBottom,
+    neumorphicBackgroundColor = neumorphicBackgroundColor,
     isDark = false
 )
 
@@ -51,8 +54,8 @@ data class ExtendedColors(
     val defaultContentColor: Color,
     val backgroundTop: Color,
     val backgroundBottom: Color,
+    val neumorphicBackgroundColor: Color,
     val isDark: Boolean,
-
     )
 
 val LocalExtendedColors = staticCompositionLocalOf { LightExtendedColorsPalette }

@@ -7,4 +7,9 @@
     <string name="error_view_point_1">- The city is unknown</string>
     <string name="error_view_point_2">- You do not have internet</string>
     <string name="error_view_point_3">- The server is OFF</string>
+
+    <string name="imperial">Imperial</string>
+    <string name="metric">Metric</string>
+    <string name="standard">Standard</string>
+    <string name="temperature">Temperature</string>
 </resources>
