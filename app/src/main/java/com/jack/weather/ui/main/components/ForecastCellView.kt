@@ -1,6 +1,5 @@
 package com.jack.weather.ui.main.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -47,9 +46,6 @@ fun ForecastCellView(
                         neuShape =
                         Punched.Rounded(radius = 16.dp)
                     )
-                    .clickable {
-
-                    }
             ) {
                 Column(
                     modifier = modifier
