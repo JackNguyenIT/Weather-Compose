@@ -14,21 +14,26 @@ import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jack.weather.ui.components.BackgroundWrapper
 import com.jack.weather.ui.components.CityEditView
+import com.jack.weather.ui.main.components.ErrorView
 import com.jack.weather.ui.main.components.MainViewTopBarView
 import com.jack.weather.ui.main.components.MainWeatherAnimatedView
+import com.jack.weather.ui.main.components.TemperatureContainerStatus
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel()
 ) {
-    MainContent(modifier = modifier, mainViewModel = viewModel)
+    MainContent(modifier = modifier, uiState = viewModel.uiState, onExpanded = {
+        viewModel.update(it)
+    })
 }
 
 @Composable
 private fun MainContent(
     modifier: Modifier = Modifier,
-    mainViewModel: MainViewModel
+    uiState: MainUiState,
+    onExpanded: (TemperatureContainerStatus) -> Unit
 ) {
     Surface(
         modifier = modifier
@@ -43,22 +48,27 @@ private fun MainContent(
                 CityEditView(
                     modifier = Modifier.fillMaxWidth()
                 )
-                MainViewTopBarView(onExpanded = {
-                    mainViewModel.update(it)
-                })
+                if (uiState.isError) {
+                    ErrorView()
+                } else {
+                    MainViewTopBarView(weather = uiState.weather, onExpanded = onExpanded)
+                }
             }
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .zIndex(1f)
-            ) {
-                Spacer(modifier = Modifier.height(30.dp))
-                MainWeatherAnimatedView(
-                    weather = mainViewModel.uiState.weather
-                )
+            if (!uiState.isError) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .zIndex(1f)
+                ) {
+                    Spacer(modifier = Modifier.height(30.dp))
+                    MainWeatherAnimatedView(
+                        weather = uiState.weather
+                    )
+                }
             }
+
         }
     }
 }
