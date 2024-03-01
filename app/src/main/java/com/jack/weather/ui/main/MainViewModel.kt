@@ -30,6 +30,41 @@ class MainViewModel @Inject constructor(
                     humidity = 10,
                     pressure = 10,
                     timestampSecond = 1709204
+                ),
+                weathers = listOf(
+                    Weather(
+                        city = "Da Nang",
+                        weatherUnit = WeatherUnit.IMPERIAL,
+                        type = Weather.Type.DRIZZLE,
+                        temperature = 30f,
+                        humidity = 10,
+                        pressure = 10,
+                        timestampSecond = 1709204
+                    ), Weather(
+                        city = "Da Nang",
+                        weatherUnit = WeatherUnit.IMPERIAL,
+                        type = Weather.Type.CLEAR,
+                        temperature = 30f,
+                        humidity = 10,
+                        pressure = 10,
+                        timestampSecond = 1709204
+                    ), Weather(
+                        city = "Da Nang",
+                        weatherUnit = WeatherUnit.IMPERIAL,
+                        type = Weather.Type.CLOUDS_SCATTERED_CLOUDS,
+                        temperature = 30f,
+                        humidity = 10,
+                        pressure = 10,
+                        timestampSecond = 1709204
+                    ), Weather(
+                        city = "Da Nang",
+                        weatherUnit = WeatherUnit.IMPERIAL,
+                        type = Weather.Type.RAIN_LIGHT_RAIN,
+                        temperature = 30f,
+                        humidity = 10,
+                        pressure = 10,
+                        timestampSecond = 1709204
+                    )
                 )
             )
         }

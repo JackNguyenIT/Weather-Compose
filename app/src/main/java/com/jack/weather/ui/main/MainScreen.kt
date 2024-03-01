@@ -1,5 +1,6 @@
 package com.jack.weather.ui.main
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -15,6 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.jack.weather.ui.components.BackgroundWrapper
 import com.jack.weather.ui.components.CityEditView
 import com.jack.weather.ui.main.components.ErrorView
+import com.jack.weather.ui.main.components.MainViewBottomView
 import com.jack.weather.ui.main.components.MainViewTopBarView
 import com.jack.weather.ui.main.components.MainWeatherAnimatedView
 import com.jack.weather.ui.main.components.TemperatureContainerStatus
@@ -67,6 +69,14 @@ private fun MainContent(
                         weather = uiState.weather
                     )
                 }
+
+                Box(modifier = Modifier.align(alignment = Alignment.BottomCenter)) {
+                    MainViewBottomView(
+                        weathers = uiState.weathers,
+                        modifier = Modifier.align(alignment = Alignment.BottomCenter)
+                    )
+                }
+
             }
 
         }
