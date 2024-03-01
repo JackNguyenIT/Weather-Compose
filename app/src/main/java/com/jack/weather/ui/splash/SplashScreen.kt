@@ -1,16 +1,14 @@
 package com.jack.weather.ui.splash
 
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color.Companion.Gray
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import com.jack.weather.R
 import kotlinx.coroutines.delay
 
 
@@ -32,14 +30,12 @@ fun SplashScreen(
 private fun SplashContent(
     modifier: Modifier = Modifier,
 ) {
-    Box(
+    Image(
+        painter = painterResource(R.drawable.background_splash),
+        contentDescription = "",
+        contentScale = ContentScale.FillBounds,
         modifier = modifier
-            .border(width = 4.dp, color = Gray, shape = RoundedCornerShape(16.dp)),
-    ) {
-        Text(
-            text = "Splash Screen",
-            modifier = Modifier.padding(16.dp),
-            textAlign = TextAlign.Center,
-        )
-    }
+            .fillMaxWidth()
+            .fillMaxHeight()
+    )
 }
